@@ -93,7 +93,7 @@ contract EDC is Owned, StandardToken {
         name = "Edcoin";                          
         decimals = 18; 
         symbol = "EDC";
-        totalSupply = 1500000000 * 10 ** uint256(decimals); 
+        totalSupply = 900000000 * 10 ** uint256(decimals); 
         owner = msg.sender;
 
         //transfer all to handler address
