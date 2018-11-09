@@ -1,5 +1,5 @@
-var EDC = artifacts.require('./EDC.sol');
-var EDCCrowdSale = artifacts.require('./EDCCrowdSale.sol');
+const EDC = artifacts.require('./EDC.sol');
+const EDCCrowdSale = artifacts.require('./EDCCrowdSale.sol');
 
 contract('EDC check', function(accounts){
     //coin info
