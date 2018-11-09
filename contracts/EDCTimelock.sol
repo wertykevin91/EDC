@@ -32,7 +32,7 @@ library SafeERC20 {
     }
 }
 
-contract COSTokenTimelock {
+contract EDCTimelock {
     using SafeERC20 for ERC20;
     ERC20 public token;
 

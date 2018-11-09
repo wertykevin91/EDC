@@ -154,9 +154,10 @@ contract EDCCrowdSale is OwnedByICOOwner {
     function calculateBonuses(uint256 amount) internal view returns (uint256 total) {
         // 5% for early access, 0% for public
         // this is for public sales
-        // therefore 1 COS = 0.001077 ETH
+        // 0.20 $/EDC, 207 $/ETH, ?ETH/EDC
+        // therefore 1 EDC = 9.6618357e+14 ETH
         uint256 x = amount * 10 ** 18;
-        return x.div((1077000000000000));
+        return x.div((966183570000000));
     }
 
     /**

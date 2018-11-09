@@ -16,7 +16,7 @@ module.exports = function(deployer, network, accounts){
     var raiseAmount = 10000000;
     // 10 million dollar raise & 0.10 per token & no bonus will yield 100 million tokens to transfer
     var raisedTokens = 100000000;
-    var tokens15Pct = 225000000;
+    var tokens15Pct = 135000000;
     var raiseAmountEth = Math.round(raiseAmount / ethPriceUSD);
 
     deployer.deploy(safeMath);
@@ -34,14 +34,8 @@ module.exports = function(deployer, network, accounts){
         crowdSalesInstance = instance;
         return tokenInstance.setDistributionAddress(crowdSalesContract.address, {"from": accounts[0]});
     }).then(function(){
-        // send tokens to crowdsale contract
-        return tokenInstance.transfer(crowdSalesContract.address, raisedTokens);
-    }).then(function(){
         // deploy timelock
         return deployer.deploy(tokenTimelockContract, cosToken.address, accounts[0], days365);
-    }).then(function(){
-        // lets send 15% of tokens into timelock
-        return tokenInstance.transfer(tokenTimelockContract.address, tokens15Pct);
     });
-    
+    // Don't forget to send tokens to the timelock and the crowdsale to utilize them.
 }

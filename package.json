@@ -1,0 +1,26 @@
+{
+  "name": "edc",
+  "version": "1.0.0",
+  "description": "Edcoin contracts",
+  "main": "contracts",
+  "directories": {
+    "test": "test",
+    "migrations": "migrations"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enigmatic331/EDC.git"
+  },
+  "author": "wertykevin91",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Enigmatic331/EDC/issues"
+  },
+  "homepage": "https://github.com/Enigmatic331/EDC#readme",
+  "dependencies": {
+    "truffle-hdwallet-provider": "0.0.6"
+  }
+}
