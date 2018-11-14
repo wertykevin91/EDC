@@ -21,28 +21,20 @@ contract('EDC check', function(accounts){
 
             return tokenContract.decimals.call();
         }).then(function(contractDecimals){
-            assert.equal(contractDecimals, decimals, "Incorrect decimals");
+            assert.strictEqual(contractDecimals.toNumber(), decimals, "Incorrect decimals");
             return tokenContract.name.call();
         }).then(function(contractName){
-            assert.equal(contractName, name, "Incorrect name");
+            assert.strictEqual(contractName, name, "Incorrect name");
             return tokenContract.symbol.call();
         }).then(function(contractSymbol){
-            assert.equal(contractSymbol, symbol, "Incorrect symbol");
+            assert.strictEqual(contractSymbol, symbol, "Incorrect symbol");
             return tokenContract.totalSupply.call();
         }).then(function(contractTotalSupply){
-            assert.equal(contractTotalSupply.toNumber(), totalSupply * Math.pow(10, 18), "Incorrect total supply");
+            assert.strictEqual(contractTotalSupply.toNumber(), totalSupply * Math.pow(10, 18), "Incorrect total supply");
 
             return tokenContract.distributionAddress.call();
         }).then(function(distributionAddress){
-            assert.equal(distributionAddress, crowdSaleContract.address, "Incorrect distribution address");
+            assert.strictEqual(distributionAddress, crowdSaleContract.address, "Incorrect distribution address");
         });
-    });
-
-    it("Check transfers", function(){
-        // TODO
-    });
-
-    it("Check basic functions", function(){
-        // TODO
     });
 });

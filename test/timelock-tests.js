@@ -19,7 +19,7 @@ contract('EDC Timelock tests', async(accounts, b, c) => {
 
         await tokenContract.transfer(timelockContract.address, tokenToLock);
         let ntimelockBalance = await tokenContract.balanceOf(timelockContract.address);
-        assert.equal(ntimelockBalance.toNumber(), tokenToLock + timelockBalance.toNumber());
+        assert.strictEqual(ntimelockBalance.toNumber(), tokenToLock + timelockBalance.toNumber());
     });
 
     it('Test timelock contract', async()=> {
@@ -42,10 +42,10 @@ contract('EDC Timelock tests', async(accounts, b, c) => {
         }catch(e){
             hasError = true;
         }
-        assert.equal(hasError, true, "No error even though not release time.");
+        assert.strictEqual(hasError, true, "No error even though not release time.");
 
         let ntimelockBalance = await tokenContract.balanceOf(timelockContract.address);
-        assert.equal(ntimelockBalance.toNumber(), tokenToLock + timelockBalance.toNumber());
+        assert.strictEqual(ntimelockBalance.toNumber(), tokenToLock + timelockBalance.toNumber());
 
         // only applicable for local testnet
         // RPC call to move timestamp forward
@@ -64,13 +64,13 @@ contract('EDC Timelock tests', async(accounts, b, c) => {
             }catch(e){
                 hasError = true;
             }
-            assert.equal(hasError, false, "Error even though release time.");
+            assert.strictEqual(hasError, false, "Error even though release time.");
             
             ntimelockBalance = await tokenContract.balanceOf(timelockContract.address);
-            assert.equal(ntimelockBalance.toNumber(), 0, "Balance not invalid.");
+            assert.strictEqual(ntimelockBalance.toNumber(), 0, "Balance not invalid.");
     
             let ownerBalance = await tokenContract.balanceOf(accounts[0]);
-            assert.equal(ownerBalance.toNumber(), totalSupply * Math.pow(10, 18), "Owner balance invalid.");
+            assert.strictEqual(ownerBalance.toNumber(), totalSupply * Math.pow(10, 18), "Owner balance invalid.");
         }
     });
 });

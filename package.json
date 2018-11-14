@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Enigmatic331/EDC#readme",
   "dependencies": {
+    "big-number": "^1.0.0",
     "truffle-hdwallet-provider": "0.0.6"
   }
 }

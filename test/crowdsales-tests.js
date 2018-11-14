@@ -8,7 +8,7 @@ contract("EDCCrowdSale Tests", async(accounts) => {
         let crowdsaleContractTokenInitial = 100000000 * Math.pow(10, 18);
 
         let distributionAddress = await tokenContract.distributionAddress.call();
-        assert.equal(distributionAddress, crowdsaleContract.address, "Invalid contract address");
+        assert.strictEqual(distributionAddress, crowdsaleContract.address, "Invalid contract address");
 
         //console.log(tokenContract);
         await tokenContract.distributeTokens(crowdsaleContract.address, crowdsaleContractTokenInitial);
@@ -17,8 +17,7 @@ contract("EDCCrowdSale Tests", async(accounts) => {
 
         let crowdsaleContractBalance = await tokenContract.balanceOf.call(crowdsaleContract.address);
         //console.log(crowdsaleContractBalance.toNumber());
-        assert.equal(crowdsaleContractTokenInitial, crowdsaleContractBalance.toNumber(), "Invalid contract balance");
-        console.log('asserted');
+        assert.strictEqual(crowdsaleContractTokenInitial, crowdsaleContractBalance.toNumber(), "Invalid contract balance");
     });
     
     // buy tokens from contract
@@ -40,12 +39,12 @@ contract("EDCCrowdSale Tests", async(accounts) => {
             // verify contract actually gave me some tokens
 
             let buyerBalance = await tokenContract.balanceOf.call(accounts[5]);
-            assert.equal(buyerBalance.toNumber() / Math.pow(10,18), 0, "Invalid buyer balance: has tokens");
+            assert.strictEqual(buyerBalance.toNumber() / Math.pow(10,18), 0, "Invalid buyer balance: has tokens");
         }catch(e){
             //console.log(e);
             whitelistError = e != null;
         }
-        assert.equal(whitelistError, true, "Non-whitelisted user not bounced.");
+        assert.strictEqual(whitelistError, true, "Non-whitelisted user not bounced.");
 
         // add account into whitelist
         await crowdsaleContract.addToWhiteList([accounts[5]], [Math.pow(10,18)]);
@@ -70,7 +69,7 @@ contract("EDCCrowdSale Tests", async(accounts) => {
             console.log(e);
             whitelistError = e != null;
         }
-        assert.equal(whitelistError, false, "Whitelisted user is bounced for some reason.");
+        assert.strictEqual(whitelistError, false, "Whitelisted user is bounced for some reason.");
     });
 });
 
